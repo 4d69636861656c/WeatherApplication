@@ -107,26 +107,34 @@ namespace WeatherApplication.ViewModels
 
         /// <summary>
         /// Retrieves a datatable which can be used to populate objects that accept a DataTable DataSource setter. 
-        /// It accepts 1 to 5 days (integer number) as arguments. 
+        /// It accepts 1 to 6 days (integer number) as arguments. Anything over that is probably unrealiable. 
         /// </summary>
         /// <param name="numberOfRows"></param>
         /// <returns>DataTable</returns>
-        public DataTable RetrieveForecastDatatable(int numberOfRows = 5)
+        public DataTable RetrieveForecastDatatable(int numberOfRows = 6)
         {
             if (numberOfRows <= 0)
             {
                 numberOfRows = 1;
             }
 
-            if (numberOfRows > 5)
+            if (numberOfRows > 6)
             {
-                numberOfRows = 5;
+                numberOfRows = 6;
             }
 
             // Column headers. 
             string[] columnHeaders = new string[]
             {
-                    " ", "Temperature", "Feels like", "Temperature Min", "Temperature Max", "Humidity", "Pressure"
+                " ", 
+                "Temperature (°C)", 
+                "Feels like", 
+                "Temperature Min", 
+                "Temperature Max", 
+                "Humidity (%)", 
+                "Wind Speed (m/s)", 
+                "Atmospheric Pressure (hPa)", 
+                "Visibility (m)"
             };
 
             // Row headers. 
@@ -137,7 +145,8 @@ namespace WeatherApplication.ViewModels
                     (DateTime.Now.AddDays(2).DayOfWeek).ToString(),
                     (DateTime.Now.AddDays(3).DayOfWeek).ToString(),
                     (DateTime.Now.AddDays(4).DayOfWeek).ToString(),
-                    (DateTime.Now.AddDays(5).DayOfWeek).ToString()
+                    (DateTime.Now.AddDays(5).DayOfWeek).ToString(),
+                    (DateTime.Now.AddDays(6).DayOfWeek).ToString()
             };
 
             //Create a new DataTable. 
@@ -149,7 +158,7 @@ namespace WeatherApplication.ViewModels
                 datatable.Columns.Add($"{columnHeaders[i]}");
             }
 
-            // Populate rows. 
+            // Check connection. Populate rows. 
             if (GetConnectionStatus())
             {
                 for (int currentIndex = 0; currentIndex < numberOfRows; currentIndex++)
@@ -161,7 +170,9 @@ namespace WeatherApplication.ViewModels
                         ReturnListOfForecastsForDay(currentIndex).Main.TempMin.ToString(),
                         ReturnListOfForecastsForDay(currentIndex).Main.TempMax.ToString(),
                         ReturnListOfForecastsForDay(currentIndex).Main.Humidity.ToString(),
-                        ReturnListOfForecastsForDay(currentIndex).Main.Pressure.ToString()
+                        ReturnListOfForecastsForDay(currentIndex).Wind.Speed.ToString(),
+                        ReturnListOfForecastsForDay(currentIndex).Main.Pressure.ToString(),
+                        ReturnListOfForecastsForDay(currentIndex).Visibility.ToString()
                     );
                 }
             }
@@ -171,6 +182,8 @@ namespace WeatherApplication.ViewModels
                 {
                     datatable.Rows.Add(
                         rowHeaders[currentIndex],
+                        "-",
+                        "-",
                         "-",
                         "-",
                         "-",

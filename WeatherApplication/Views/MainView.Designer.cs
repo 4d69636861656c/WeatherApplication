@@ -62,14 +62,14 @@
             this.weatherNowLabel.AutoSize = true;
             this.weatherNowLabel.Location = new System.Drawing.Point(531, 12);
             this.weatherNowLabel.Name = "weatherNowLabel";
-            this.weatherNowLabel.Size = new System.Drawing.Size(100, 13);
+            this.weatherNowLabel.Size = new System.Drawing.Size(103, 13);
             this.weatherNowLabel.TabIndex = 3;
-            this.weatherNowLabel.Text = "Right now there are";
+            this.weatherNowLabel.Text = "Right now, there are";
             // 
             // temperatureNowLabel
             // 
             this.temperatureNowLabel.AutoSize = true;
-            this.temperatureNowLabel.Location = new System.Drawing.Point(626, 12);
+            this.temperatureNowLabel.Location = new System.Drawing.Point(630, 12);
             this.temperatureNowLabel.Name = "temperatureNowLabel";
             this.temperatureNowLabel.Size = new System.Drawing.Size(25, 13);
             this.temperatureNowLabel.TabIndex = 4;
@@ -78,7 +78,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(533, 28);
+            this.label1.Location = new System.Drawing.Point(531, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 13);
             this.label1.TabIndex = 5;
@@ -87,7 +87,7 @@
             // currentlySelectedCityLabel
             // 
             this.currentlySelectedCityLabel.AutoSize = true;
-            this.currentlySelectedCityLabel.Location = new System.Drawing.Point(626, 28);
+            this.currentlySelectedCityLabel.Location = new System.Drawing.Point(620, 28);
             this.currentlySelectedCityLabel.Name = "currentlySelectedCityLabel";
             this.currentlySelectedCityLabel.Size = new System.Drawing.Size(25, 13);
             this.currentlySelectedCityLabel.TabIndex = 6;
