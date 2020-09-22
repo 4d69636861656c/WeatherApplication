@@ -45,7 +45,7 @@ namespace WeatherApplication
                 MessageBox.Show($"Something went wrong. Data was not received properly!" +
                     $"{System.Environment.NewLine}See if you have a working internet connection." +
                     $"{System.Environment.NewLine}Also, try spell-checking your city name." +
-                    $"{System.Environment.NewLine}Have a sunny day! :)", 
+                    $"{System.Environment.NewLine}Have a sunny day! :)",
                     "Something went wrong!");
             }
         }

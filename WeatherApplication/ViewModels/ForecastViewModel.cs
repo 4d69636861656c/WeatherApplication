@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Net;
+using System.Threading.Tasks;
 using WeatherApplication.Models;
 
 namespace WeatherApplication.ViewModels
@@ -12,8 +13,8 @@ namespace WeatherApplication.ViewModels
     class ForecastViewModel : INotifyPropertyChanged
     {
         #region Constants
-        private const string API_KEY = "cff5eccc06e605d67066e7bed324b552";
-        private const string URL = "http://api.openweathermap.org/data/2.5/forecast?q={CITY}&units=metric&exclude=daily&appid={API_KEY}";
+        private const string API_KEY = "4c06b57f32656f388a2256e2432c3e63";
+        private const string URL = "http://api.openweathermap.org/data/2.5/forecast?q={CITY}&units=metric&exclude=daily,hourly&appid={API_KEY}";
         #endregion
 
         #region Private Members
@@ -70,7 +71,7 @@ namespace WeatherApplication.ViewModels
         {
             get
             {
-                return RetrieveForecastDatatable();
+                return RetrieveForecastDatatableAsync().Result;
             }
         }
         #endregion
@@ -123,31 +124,8 @@ namespace WeatherApplication.ViewModels
                 numberOfRows = 6;
             }
 
-            // Column headers. 
-            string[] columnHeaders = new string[]
-            {
-                " ", 
-                "Temperature (°C)", 
-                "Feels like", 
-                "Temperature Min", 
-                "Temperature Max", 
-                "Humidity (%)", 
-                "Wind Speed (m/s)", 
-                "Atmospheric Pressure (hPa)", 
-                "Visibility (m)"
-            };
-
-            // Row headers. 
-            string[] rowHeaders = new string[]
-            {
-                    DateTime.Now.DayOfWeek.ToString(),
-                    (DateTime.Now.AddDays(1).DayOfWeek).ToString(),
-                    (DateTime.Now.AddDays(2).DayOfWeek).ToString(),
-                    (DateTime.Now.AddDays(3).DayOfWeek).ToString(),
-                    (DateTime.Now.AddDays(4).DayOfWeek).ToString(),
-                    (DateTime.Now.AddDays(5).DayOfWeek).ToString(),
-                    (DateTime.Now.AddDays(6).DayOfWeek).ToString()
-            };
+            string[] columnHeaders, rowHeaders;
+            InitializeRowAndColumnHeaders(out columnHeaders, out rowHeaders);
 
             //Create a new DataTable. 
             var datatable = new DataTable();
@@ -196,6 +174,11 @@ namespace WeatherApplication.ViewModels
 
             // Return a dataTable for binding its contents to the property. 
             return datatable;
+        }
+
+        public Task<DataTable> RetrieveForecastDatatableAsync(int numberOfRows = 6)
+        {
+            return Task.Run(() => RetrieveForecastDatatable(numberOfRows));
         }
         #endregion
 
@@ -262,6 +245,35 @@ namespace WeatherApplication.ViewModels
             }
 
             return dailyForecast;
+        }
+
+        private static void InitializeRowAndColumnHeaders(out string[] columnHeaders, out string[] rowHeaders)
+        {
+            // Column headers. 
+            columnHeaders = new string[]
+            {
+                " ",
+                "Temperature (°C)",
+                "Feels like",
+                "Temperature Min",
+                "Temperature Max",
+                "Humidity (%)",
+                "Wind Speed (m/s)",
+                "Atmospheric Pressure (hPa)",
+                "Visibility (m)"
+            };
+
+            // Row headers. 
+            rowHeaders = new string[]
+            {
+                    DateTime.Now.DayOfWeek.ToString(),
+                    (DateTime.Now.AddDays(1).DayOfWeek).ToString(),
+                    (DateTime.Now.AddDays(2).DayOfWeek).ToString(),
+                    (DateTime.Now.AddDays(3).DayOfWeek).ToString(),
+                    (DateTime.Now.AddDays(4).DayOfWeek).ToString(),
+                    (DateTime.Now.AddDays(5).DayOfWeek).ToString(),
+                    (DateTime.Now.AddDays(6).DayOfWeek).ToString()
+            };
         }
         #endregion
     }
