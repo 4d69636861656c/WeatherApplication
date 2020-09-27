@@ -12,7 +12,7 @@ Open the project in your preferred code editor and place your key into the view 
 ### Pattern used 
 This project is written in C# and uses the MVVM pattern. You can find the idea behind this pattern here: [MVVM Pattern](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel).
 ### Models 
-
+![](https://github.com/4d69636861656c/WeatherApplication/blob/master/WeatherApplication/Resources/Diagrams/WeatherForecastAppModels.png) 
 ### View Model 
 
 ### View 
