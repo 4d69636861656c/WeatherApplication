@@ -19,3 +19,4 @@ Models hold application data. They’re usually structs or simple classes. The c
 View models transform model information into values that can be displayed on a view. They’re usually classes, so they can be passed around as references. The ForecastViewModel class found in this project is responsible for all the logic that makes the program work. By implementing INotifyPropertyChanged, we can notify changes in the properties of our objects. This is where everything is put together for easy use. This is also where the bound properties reside. 
 ### View 
 Views display visual elements and controls on the screen. In this case, it's a form where we bind UI element values to view model properties. All the actual logic is handled by the view model. 
+![](https://github.com/4d69636861656c/WeatherApplication/blob/master/WeatherApplication/Resources/Images/Views/WeatherForecastApplicationMainView.png) 
