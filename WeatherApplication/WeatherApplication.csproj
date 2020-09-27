@@ -260,6 +260,7 @@
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Diagrams\WeatherForecastAppModels.png" />
     <Content Include="Resources\Icons\always_sunny.png" />
     <Content Include="Resources\Icons\always_sunny_icon.ico" />
   </ItemGroup>
