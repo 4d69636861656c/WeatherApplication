@@ -10,8 +10,7 @@ Open the project in your preferred code editor and place your key into the view 
 
 ## Description 
 ### Pattern used 
-This project is written in C# and uses the MVVM pattern. You can find the idea behind this pattern here: 
-[MVVM Pattern](https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/MVVMPattern.png/500px-MVVMPattern.png).
+This project is written in C# and uses the MVVM pattern. You can find the idea behind this pattern here: [MVVM Pattern](https://en.wikipedia.org/Model–view–viewmodel).
 ### Models 
 
 ### View Model 
